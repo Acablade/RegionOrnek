@@ -1,0 +1,35 @@
+package me.acablade.regionevent.events;
+
+import me.acablade.regionevent.objects.Region;
+import org.bukkit.Location;
+import org.bukkit.entity.Player;
+import org.bukkit.event.HandlerList;
+import org.bukkit.event.player.PlayerEvent;
+import org.bukkit.event.player.PlayerItemConsumeEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
+
+public class RegionEnterEvent extends PlayerMoveEvent {
+
+    private static final HandlerList HANDLERS_LIST = new HandlerList();
+
+    private final Region region;
+
+    public RegionEnterEvent(Player player, Location from, Location to, Region region) {
+        super(player, from, to);
+        this.region = region;
+    }
+
+
+    public Region getRegion() {
+        return region;
+    }
+
+    @Override
+    public HandlerList getHandlers() {
+        return HANDLERS_LIST;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
+    }
+}
